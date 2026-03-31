@@ -450,9 +450,9 @@ $submit.Add_Click({
 
 
         # Add to initial groups (non-fatal)
-        try { Add-ADGroupMember -Identity "App (A) - Druva inSync - Users" -Members $username -ErrorAction Stop } catch { $result.Text += "`nCould not add to Druva group: $($_.Exception.Message)" }
-        try { Add-ADGroupMember -Identity "IM - $department" -Members $username -ErrorAction Stop } catch { $result.Text += "`nCould not add to IM group: $($_.Exception.Message)" }
-        try { Add-ADGroupMember -Identity "Map (A) - deptdrive - $department" -Members $username -ErrorAction Stop } catch { $result.Text += "`nCould not add to deptdrive group: $($_.Exception.Message)" }
+        try { Add-ADGroupMember -Identity "ADD GROUP NAME HERE" -Members $username -ErrorAction Stop } catch { $result.Text += "`nCould not add $user to group: $($_.Exception.Message)" }
+        try { Add-ADGroupMember -Identity "ADD GROUP NAME HERE" -Members $username -ErrorAction Stop } catch { $result.Text += "`nCould not add $user to group: $($_.Exception.Message)" }
+        try { Add-ADGroupMember -Identity "ADD GROUP NAME HERE" -Members $username -ErrorAction Stop } catch { $result.Text += "`nCould not add $user to group: $($_.Exception.Message)" }
 
         # Show credentials dialog modal to main form
         $credentialsForm = New-Object System.Windows.Forms.Form
@@ -497,18 +497,6 @@ $submit.Add_Click({
         $credentialsForm.Controls.Add($okButton)
 
         [void]$credentialsForm.ShowDialog($form)
-
-        <# Role-based group add (non-fatal)
-        $groupPrefix = if ($roleType -eq "Faculty") { "Faculty" } elseif ($roleType -eq "Staff") { "Staff" } else { $null }
-        if ($groupPrefix) {
-            $groupName = "$groupPrefix - $department"
-            try {
-                Add-ADGroupMember -Identity $groupName -Members $username -ErrorAction Stop
-                $result.Text += "`nAdded to group: $groupName"
-            } catch {
-                $result.Text += "`nCould not add to group '$groupName': $($_.Exception.Message)"
-            }
-        }#>
 
         # Role-based group add (non-fatal)
         $roleType = $roleDropdown.SelectedItem.ToString()
