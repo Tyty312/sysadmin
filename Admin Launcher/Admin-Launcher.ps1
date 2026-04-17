@@ -22,7 +22,7 @@ if (-not (Test-Path $CredDir)) { New-Item -ItemType Directory -Path $CredDir -Fo
 # -------------------------
 if (-not $Elevated) {
     Write-Host "`nEnter your Admin account credentials..." -ForegroundColor Yellow
-    $DefaultDomain = "ANGELO"
+    $DefaultDomain = "DOMAIN"
     $cred = Get-Credential -Message "Enter your Admin Account Username"
 
     # Optional: prepend domain if missing
